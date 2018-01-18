@@ -9,19 +9,26 @@ ENV JAVA_HOME="/usr/local/java/jdk1.6.0_45" \
     LANGUAGE="en_US:en" \
     LC_ALL="en_US.UTF-8"
 
+WORKDIR /home
+
+COPY resource /home
+
 #刷新包缓存 并且 安装wget工具
 RUN \cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
  && yum update -y \
  && yum provides '*/applydeltarpm' \
  && yum install -y zip unzip tar curl wget deltarpm \
- && mkdir -p ${JDK_PARENT_HOME}
+ && mkdir -p ${JDK_PARENT_HOME} \
+ && cp $JDK_NAME $JDK_PARENT_HOME
 
 WORKDIR ${JDK_PARENT_HOME}
-COPY resource ${JDK_PARENT_HOME}
+#COPY resource ${JDK_PARENT_HOME}
 
 RUN chmod a+x ${JDK_NAME} \
  && ${JDK_PARENT_HOME}${JDK_NAME} \
- && rm -f ${JDK_NAME}
+
+RUN rm -rf /home/${JDK_NAME}
+ && rm -rf ${JDK_NAME}
 
 # 配置环境变量
 ENV JAVA_HOME ${JAVA_HOME}
