@@ -20,8 +20,10 @@ WORKDIR ${JDK_PARENT_HOME}
 COPY resource ${JDK_PARENT_HOME}
 
 RUN chmod a+x ${JDK_NAME} \
- && ./${JDK_NAME} \
- && rm -f ${JDK_NAME}
+# && ./${JDK_NAME} \
+ && ./jdk-6u45-linux-x64.bin \
+ && rm -f jdk-6u45-linux-x64.bin
+# && rm -f ${JDK_NAME}
 
 # 配置环境变量
 ENV JAVA_HOME ${JAVA_HOME}
