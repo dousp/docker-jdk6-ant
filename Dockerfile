@@ -1,4 +1,4 @@
-FROM douspeng/docker-ali-centos
+FROM centos:7.4.1708
 
 LABEL maintainer="douspeng@sina.cn" provider="douspeng"
 
