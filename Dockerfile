@@ -19,7 +19,7 @@ RUN \cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 WORKDIR ${JDK_PARENT_HOME}
 COPY resource ${JDK_PARENT_HOME}
 
-RUN chmod a+x ${JDK_PARENT_HOME}${JDK_NAME} \
+RUN chmod a+x ${JDK_NAME} \
  && ./${JDK_NAME} \
  && rm -f ${JDK_NAME}
 
