@@ -1,4 +1,4 @@
-FROM douspeng/docker-ali-centos
+FROM registry.cn-beijing.aliyuncs.com/douspeng/ali-centos
 
 LABEL maintainer="douspeng@sina.cn" provider="douspeng"
 
